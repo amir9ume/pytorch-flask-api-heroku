@@ -1,17 +1,20 @@
 import json
 
-from commons import get_model, transform_image
+from commons import get_model #, transform_image
 
-model = get_model()
-imagenet_class_index = json.load(open('imagenet_class_index.json'))
-
+model, tokenizer = get_model()
 
 def get_prediction(image_bytes):
     try:
-        tensor = transform_image(image_bytes=image_bytes)
-        outputs = model.forward(tensor)
+        #tensor = transform_image(image_bytes=image_bytes)        
+        inputs = tokenizer([image_bytes], return_tensors='pt') 
+        #print('inputs are : ',inputs)
+        reply_ids = model.generate(inputs['input_ids'])
+        #print('reply ids : ',reply_ids)
+        replies= ([tokenizer.decode(g, skip_special_tokens=True, clean_up_tokenization_spaces=False) for g in reply_ids])
+        
     except Exception:
         return 0, 'error'
-    _, y_hat = outputs.max(1)
-    predicted_idx = str(y_hat.item())
-    return imagenet_class_index[predicted_idx]
+    
+    return replies
+    
