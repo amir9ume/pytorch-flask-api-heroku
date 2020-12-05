@@ -4,9 +4,6 @@ import torch
 
 from commons import get_model #, transform_image
 model, tokenizer = get_model()
-from guppy import hpy
-h = hpy()
-print(h.heap())
 
 def print_size_of_model(model):
     torch.save(model.state_dict(), "temp.p")
