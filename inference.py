@@ -1,12 +1,23 @@
 import json
+import os
+import torch
 
 from commons import get_model #, transform_image
+model, tokenizer = get_model()
+from guppy import hpy
+h = hpy()
+print(h.heap())
 
+def print_size_of_model(model):
+    torch.save(model.state_dict(), "temp.p")
+    print('Size (MB):', os.path.getsize("temp.p")/1e6)
+    os.remove('temp.p')
 
+print_size_of_model(model)
 
 def get_prediction(image_bytes):
     try:
-        model, tokenizer = get_model()
+        
         #tensor = transform_image(image_bytes=image_bytes)        
         inputs = tokenizer([image_bytes], return_tensors='pt') 
         #print('inputs are : ',inputs)
