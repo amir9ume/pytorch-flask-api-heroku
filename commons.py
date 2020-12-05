@@ -1,18 +1,12 @@
 import io
-
 from transformers import BlenderbotSmallTokenizer, BlenderbotForConditionalGeneration
-
-
-print('init done at initalization')
-mname = 'facebook/blenderbot-90M'
-model = BlenderbotForConditionalGeneration.from_pretrained(mname)
-
-print('Loading tokenizer...')
-tokenizer = BlenderbotSmallTokenizer.from_pretrained(mname)
-
 
 def get_model():
     print('returning model now')
+    mname = 'facebook/blenderbot-90M'
+    model = BlenderbotForConditionalGeneration.from_pretrained(mname)    
+    print('Loading tokenizer...')
+    tokenizer = BlenderbotSmallTokenizer.from_pretrained(mname)
     return model, tokenizer
 
 
