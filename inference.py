@@ -2,10 +2,11 @@ import json
 
 from commons import get_model #, transform_image
 
-model, tokenizer = get_model()
+
 
 def get_prediction(image_bytes):
     try:
+        model, tokenizer = get_model()
         #tensor = transform_image(image_bytes=image_bytes)        
         inputs = tokenizer([image_bytes], return_tensors='pt') 
         #print('inputs are : ',inputs)
