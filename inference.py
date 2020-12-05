@@ -8,7 +8,7 @@ def get_prediction(image_bytes):
     try:
         model, tokenizer = get_model()  
         inputs = tokenizer([image_bytes], return_tensors='pt') 
-        print('inputs are : ',inputs)
+    #    print('inputs are : ',inputs)
         reply_ids = model.generate(inputs['input_ids'])
         print('reply ids : ',reply_ids)
         replies= ([tokenizer.decode(g, skip_special_tokens=True, clean_up_tokenization_spaces=False) for g in reply_ids])
