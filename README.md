@@ -1,9 +1,9 @@
 # PyTorch Flask API
+Run a chat bot model on Flask API
 
+Check the demo [here](https://talking-bot-blender.herokuapp.com/).
 
-Check the demo [here](https://pytorch-imagenet.herokuapp.com/).
-
-If you'd like to check a super simple API server, then check [this repo](https://github.com/avinassh/pytorch-flask-api).
+If you'd like to check a super simple API server, then check [this repo](https://github.com/avinassh/pytorch-flask-api).I took a lot of help from this to get started with flask api development. The original starter code is adapted here for text.
 
 
 ## Requirements
